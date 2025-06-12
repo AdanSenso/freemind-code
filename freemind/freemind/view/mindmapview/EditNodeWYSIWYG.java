@@ -193,6 +193,8 @@ public class EditNodeWYSIWYG extends EditNodeBase {
 					htmlEditorPanel.getCaretPosition());
 			super.split();
 		}
+		
+		
 
 		/*
 		 * (non-Javadoc)

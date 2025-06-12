@@ -50,6 +50,7 @@ public class NewChildAction extends AbstractAction implements ActorXml {
 		super(modeController.getText("new_child"), new ImageIcon(
 				modeController.getResource("images/idea.png")));
 		this.c = modeController;
+		System.out.println("15. maroun" + modeController.getText("new_child"));
 		this.c.getActionFactory().registerActor(this, getDoActionClass());
 		if (logger == null) {
 			logger = c.getFrame().getLogger(NewChildAction.class.getName());
@@ -59,6 +60,7 @@ public class NewChildAction extends AbstractAction implements ActorXml {
 
 	public void actionPerformed(ActionEvent e) {
 		this.c.addNew(c.getSelected(), MindMapController.NEW_CHILD, null);
+		System.out.println("6. maroun");
 	}
 
 	/*
@@ -72,6 +74,7 @@ public class NewChildAction extends AbstractAction implements ActorXml {
 		NewNodeAction addNodeAction = (NewNodeAction) action;
 		NodeAdapter parent = this.c.getNodeFromID(addNodeAction.getNode());
 		int index = addNodeAction.getIndex();
+		System.out.println("5. maroun");
 		MindMapNode newNode = c.newNode("", parent.getMap());
 		newNode.setLeft(addNodeAction.getPosition().equals("left"));
 		String newId = addNodeAction.getNewId();
@@ -104,7 +107,7 @@ public class NewChildAction extends AbstractAction implements ActorXml {
 			final KeyEvent e) {
 		final MindMapNode targetNode = target;
 		MindMapNode newNode = null;
-
+		System.out.println("7. maroun");
 		switch (newNodeMode) {
 		case MindMapController.NEW_SIBLING_BEFORE:
 		case MindMapController.NEW_SIBLING_BEHIND: {
@@ -150,6 +153,7 @@ public class NewChildAction extends AbstractAction implements ActorXml {
 	}
 
 	public MindMapNode addNewNode(MindMapNode parent, int index) {
+		System.out.println("8. maroun");
 		return addNewNode(parent, index, parent.isNewChildLeft());
 	}
 
@@ -158,6 +162,7 @@ public class NewChildAction extends AbstractAction implements ActorXml {
 		if (index == -1) {
 			index = parent.getChildCount();
 		}
+		System.out.println("9. maroun");
 		// bug fix from Dimitri.
 		c.getModel().getLinkRegistry().registerLinkTarget(parent);
 		String newId = c.getModel().getLinkRegistry().generateUniqueID(null);
@@ -168,11 +173,13 @@ public class NewChildAction extends AbstractAction implements ActorXml {
 				.getDeleteNodeAction(newId);
 		c.doTransaction(c.getText("new_child"),
 				new ActionPair(newNodeAction, deleteAction));
+		System.out.println("14. maroun");
 		return (MindMapNode) parent.getChildAt(index);
 	}
 
 	public NewNodeAction getAddNodeAction(MindMapNode parent, int index,
 			String newId, boolean newNodeIsLeft) {
+		System.out.println("10. maroun");
 		String pos = newNodeIsLeft ? "left" : "right";
 		NewNodeAction newNodeAction = new NewNodeAction();
 		newNodeAction.setNode(c.getNodeID(parent));

@@ -32,12 +32,13 @@ public class NewPreviousSiblingAction extends AbstractAction {
 	private final MindMapController controller;
 
 	public NewPreviousSiblingAction(MindMapController controller) {
-		super(controller.getText("new_sibling_before"));
+		super(controller.getText("new_sibling_before")); //original implementation
 		this.controller = controller;
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		controller.addNew(controller.getSelected(),
-				MindMapController.NEW_SIBLING_BEFORE, null);
+		System.out.println("16. maroun" );
+		controller.addNew(controller.getSelected(),				//maybe not needed if not wanting to call it through 
+				MindMapController.NEW_SIBLING_BEFORE, null); //maybe not needed if not wanting to call it through 
 	}
 }

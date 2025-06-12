@@ -178,6 +178,21 @@ import freemind.modes.mindmapmode.actions.ModeControllerActionHandler;
 import freemind.modes.mindmapmode.actions.MoveNodeAction;
 import freemind.modes.mindmapmode.actions.NewChildAction;
 import freemind.modes.mindmapmode.actions.NewPreviousSiblingAction;
+
+//adan add
+import freemind.modes.mindmapmode.actions.ExpandNodeAction;
+import freemind.modes.mindmapmode.actions.ImproveSubtreeAction;
+import freemind.modes.mindmapmode.actions.SearchFreelancersInDBAction;
+import freemind.modes.mindmapmode.actions.SearchFreelancersInDBActionV2;
+
+import freemind.modes.mindmapmode.actions.CreateSowAction;
+import freemind.modes.mindmapmode.actions.ExpandWholeAction;
+import freemind.modes.mindmapmode.actions.ImproveNodeAction;
+import freemind.modes.mindmapmode.actions.AssignSowRequestAction;
+import freemind.modes.mindmapmode.actions.ExportSowDocxAction;
+import freemind.modes.mindmapmode.actions.ReopenAIPanelAction;
+
+
 import freemind.modes.mindmapmode.actions.NewSiblingAction;
 import freemind.modes.mindmapmode.actions.NodeBackgroundColorAction;
 import freemind.modes.mindmapmode.actions.NodeBackgroundColorAction.RemoveNodeBackgroundColorAction;
@@ -323,6 +338,23 @@ public class MindMapController extends ControllerAdapter implements
 	public Action assignAttributes = new AssignAttributesAction();
 	public Action newSibling = new NewSiblingAction(this);
 	public Action newPreviousSibling = new NewPreviousSiblingAction(this);
+	
+	//added adan 
+	public Action expandNode  = new ExpandNodeAction(this);
+	public Action improveSubtree  = new ImproveSubtreeAction(this);
+	public Action searchFreelancerInDB  = new SearchFreelancersInDBAction(this);
+	public Action searchFreelancerInDBv2  = new SearchFreelancersInDBActionV2(this);
+	
+	public Action createSow  = new CreateSowAction(this);
+	public Action expandWhole  = new ExpandWholeAction(this);
+	public Action improveNode  = new ImproveNodeAction(this);
+	public Action assignSowRequest = new AssignSowRequestAction(this);
+	public Action exportSowDocx = new ExportSowDocxAction(this);
+	public Action reopenAIPanel = new ReopenAIPanelAction(this);
+	
+	
+	
+	
 	public Action setLinkByFileChooser = new SetLinkByFileChooserAction();
 	public Action setImageByFileChooser = new SetImageByFileChooserAction();
 	public Action followLink = new FollowLinkAction();
@@ -471,6 +503,9 @@ public class MindMapController extends ControllerAdapter implements
 		attributeController = new MindMapModeAttributeController(this);
 		showAttributeManagerAction = getController().showAttributeManagerAction;
 		propertyAction = getController().propertyAction;
+		
+		//adan add 29.5
+		
 	}
 
 	private void createStandardActions() {
@@ -488,7 +523,7 @@ public class MindMapController extends ControllerAdapter implements
 //		getActionFactory().registerHandler(
 //				new freemind.modes.mindmapmode.actions.xml.PrintActionHandler(
 //						this));
-
+		System.out.println("11. maroun");
 		cut = new CutAction(this);
 		paste = new PasteAction(this);
 		pasteAsPlainText = new PasteAsPlainTextAction(this);
@@ -1129,6 +1164,18 @@ public class MindMapController extends ControllerAdapter implements
 		editLong.setEnabled(enabled);
 		newSibling.setEnabled(enabled);
 		newPreviousSibling.setEnabled(enabled);
+		
+		//adan add
+		expandNode.setEnabled(enabled);
+		improveSubtree.setEnabled(enabled);
+		searchFreelancerInDB.setEnabled(enabled);
+		searchFreelancerInDBv2.setEnabled(enabled);
+		createSow.setEnabled(enabled);
+		expandWhole.setEnabled(enabled);
+		improveNode.setEnabled(enabled);
+		assignSowRequest.setEnabled(enabled);
+		exportSowDocx.setEnabled(enabled);
+		
 		setLinkByFileChooser.setEnabled(enabled);
 		setImageByFileChooser.setEnabled(enabled);
 		followLink.setEnabled(enabled);
@@ -1155,6 +1202,7 @@ public class MindMapController extends ControllerAdapter implements
 		undo.setEnabled(enabled);
 		redo.setEnabled(enabled);
 		edit.setEnabled(enabled);
+		System.out.println("12. maroun");
 		newChild.setEnabled(enabled);
 		toggleFolded.setEnabled(enabled);
 		toggleChildrenFolded.setEnabled(enabled);
@@ -1622,11 +1670,13 @@ public class MindMapController extends ControllerAdapter implements
 	public MindMapNode addNew(final MindMapNode target, final int newNodeMode,
 			final KeyEvent e) {
 		edit.stopEditing();
+		System.out.println("13. maroun");
 		return newChild.addNew(target, newNodeMode, e);
 	}
 
 	public MindMapNode addNewNode(MindMapNode parent, int index,
 			boolean newNodeIsLeft) {
+		System.out.println("14. maroun");
 		return newChild.addNewNode(parent, index, newNodeIsLeft);
 	}
 
@@ -2344,5 +2394,14 @@ public class MindMapController extends ControllerAdapter implements
 	public boolean doTransaction(String pName, ActionPair pPair) {
 		return actionFactory.doTransaction(pName, pPair);
 	}
+	
+	//adan add 29.5
+	public void autoSave() {
+	    boolean saved = ((ControllerAdapter) this.getController().getModeController()).save();
+	    if (!saved) {
+	        System.err.println("Auto-save failed.");
+	    }
+	}
+
 
 }

@@ -55,6 +55,7 @@ import java.util.ListIterator;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
+import java.io.File;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -74,7 +75,14 @@ import freemind.modes.MindMap;
 import freemind.modes.MindMapArrowLink;
 import freemind.modes.MindMapLink;
 import freemind.modes.MindMapNode;
+import freemind.modes.NodeAdapter;
 import freemind.preferences.FreemindPropertyListener;
+
+import java.net.URL;
+import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+
 
 /**
  * This class represents the view of a whole MindMap (in analogy to class
@@ -775,8 +783,10 @@ public class MapView extends JPanel implements Printable, Autoscroll {
 	}
 
 	public void moveToRoot() {
+
 		selectAsTheOnlyOneSelected(getRoot());
 		centerNode(getRoot());
+   
 	}
 
 	/**

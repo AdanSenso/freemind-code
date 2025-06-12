@@ -99,6 +99,7 @@ public class IndependantMapViewCreator {
 		mc.setModel(model);
 		model.load(new File(inputFileName));
 		MapView mapView = createMapView(controller, model);
+		
 		parent.add(mapView, BorderLayout.CENTER);
 		mc.setView(mapView);
 		mapView.setBounds(parent.getBounds());

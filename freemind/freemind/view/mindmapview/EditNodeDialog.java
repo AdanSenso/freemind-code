@@ -48,6 +48,16 @@ import com.inet.jortho.SpellChecker;
 import freemind.main.Tools;
 import freemind.modes.ModeController;
 
+
+// added imports for mindmap AI
+import java.net.URL;
+import java.net.HttpURLConnection;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+import freemind.modes.MindMapNode;
+import java.io.File;
+
+
 /**
  * @author foltin
  * 
@@ -115,12 +125,14 @@ public class EditNodeDialog extends EditNodeBase {
 			final JButton okButton = new JButton();
 			final JButton cancelButton = new JButton();
 			final JButton splitButton = new JButton();
+			final JButton expandNodeButton = new JButton();
 			final JCheckBox enterConfirms = new JCheckBox("",
 					binOptionIsTrue("el__enter_confirms_by_default"));
 
 			Tools.setLabelAndMnemonic(okButton, getText("ok"));
 			Tools.setLabelAndMnemonic(cancelButton, getText("cancel"));
 			Tools.setLabelAndMnemonic(splitButton, getText("split"));
+			//Tools.setLabelAndMnemonic(expandNodeButton, getText("expand node"));
 			Tools.setLabelAndMnemonic(enterConfirms, getText("enter_confirms"));
 
 			if (booleanHolderForConfirmState == null) {
@@ -154,7 +166,13 @@ public class EditNodeDialog extends EditNodeBase {
 					split();
 				}
 			});
-
+			
+			expandNodeButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					expandNode();
+				}
+			});
+			
 			enterConfirms.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					textArea.requestFocus();
@@ -244,6 +262,7 @@ public class EditNodeDialog extends EditNodeBase {
 			buttonPane.add(okButton);
 			buttonPane.add(cancelButton);
 			buttonPane.add(splitButton);
+			buttonPane.add(expandNodeButton);
 			buttonPane.setMaximumSize(new Dimension(1000, 20));
 
 			if (getFrame().getProperty("el__buttons_position").equals("above")) {
@@ -290,11 +309,73 @@ public class EditNodeDialog extends EditNodeBase {
 		 * @see freemind.view.mindmapview.EditNodeBase.Dialog#split()
 		 */
 		protected void split() {
+			
 			getEditControl().split(textArea.getText(),
 					textArea.getCaretPosition());
 			super.split();
 		}
 
+		
+		protected void expandNode() {
+//		    String filePath = "C:/Users/Adan/Desktop/SensoMedical/mind map example/maroun test.mm";
+//		    String nodeId = "ID_1568532726";
+//		    
+		    
+//			ModeController controller = getEditControl().getModeController();
+//
+//		    MindMapNode selectedNode = controller.getSelected();
+//		    if (selectedNode == null) {
+//		        System.out.println("No node selected.");
+//		        return;
+//		    }
+//
+//		    String nodeId = selectedNode.getObjectId(controller.getMap().getModel());
+//		    System.out.println("FOUND NODE ID! ID=" + nodeId);
+//
+//		    File mapFile = controller.getMap().getFile();
+//		    if (mapFile == null) {
+//		        System.out.println("No file is currently open.");
+//		        return;
+//		    }
+//
+//		    String filePath = mapFile.getAbsolutePath();
+//		    System.out.println("FOUND FILE PATH! path=" + filePath);
+
+		    
+//		    String requestUrl = "http://localhost:8000/expand_specific_node_claude";
+//
+//		    try {
+//		        URL url = new URL(requestUrl);
+//		        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//
+//		        conn.setRequestMethod("POST");
+//		        conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+//		        conn.setDoOutput(true);
+//
+//		        // Create proper JSON
+//		        String jsonInputString = String.format("{\"file_path\": \"%s\", \"node_id\": \"%s\"}", filePath, nodeId);
+//
+//		        try (OutputStream os = conn.getOutputStream()) {
+//		            byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
+//		            os.write(input, 0, input.length);
+//		        }
+//
+//		        int responseCode = conn.getResponseCode();
+//		        System.out.println("Response code: " + responseCode);
+//
+//		        // Optionally read response
+//		        java.util.Scanner scanner = new java.util.Scanner(conn.getInputStream()).useDelimiter("\\A");
+//		        String response = scanner.hasNext() ? scanner.next() : "";
+//		        System.out.println("Response body: " + response);
+//
+//		        conn.disconnect();
+//		    } catch (Exception e) {
+//		        e.printStackTrace();
+//		    }
+		}
+
+		
+		
 		/*
 		 * (non-Javadoc)
 		 * 

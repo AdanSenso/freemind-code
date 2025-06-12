@@ -68,6 +68,7 @@ public class ExportTests extends FreeMindTestBase {
 		};
 		fm.add(parent, BorderLayout.CENTER);
 		IndependantMapViewCreator creator = new IndependantMapViewCreator();
+		System.out.println("20. adan subtree" );
 		MapView mapView = creator.createMapViewForFile(TESTMAP_MM, parent,
 				mFreeMindMain);
 		parent.add(mapView, BorderLayout.CENTER);

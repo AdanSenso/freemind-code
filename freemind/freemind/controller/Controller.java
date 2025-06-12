@@ -107,6 +107,7 @@ import freemind.preferences.layout.OptionPanel;
 import freemind.preferences.layout.OptionPanel.OptionPanelFeedback;
 import freemind.view.MapModule;
 import freemind.view.mindmapview.MapView;
+import freemind.view.mindmapview.AIPanel;
 
 /**
  * Provides the methods to edit/change a Node. Forwards all messages to
@@ -210,6 +211,9 @@ public class Controller implements MapModuleChangeObserver {
 	private Vector mTabbedPaneMapModules;
 	private JTabbedPane mTabbedPane;
 	private boolean mTabbedPaneSelectionUpdate = true;
+	
+	// add 22.5
+	private AIPanel aiPanel;
 
 	//
 	// Constructors
@@ -2003,6 +2007,15 @@ public class Controller implements MapModuleChangeObserver {
 	public void addTabbedPane(JTabbedPane pTabbedPane) {
 		mTabbedPane = pTabbedPane;
 		mTabbedPaneMapModules = new Vector();
+		
+		
+		// add
+		System.out.println("addTabbedPane() called");
+		
+
+
+		
+		
 		mTabbedPane.addChangeListener(new ChangeListener() {
 
 			public synchronized void stateChanged(ChangeEvent pE) {
@@ -2072,6 +2085,7 @@ public class Controller implements MapModuleChangeObserver {
 				}
 			}
 		});
+		
 
 	}
 
@@ -2097,6 +2111,13 @@ public class Controller implements MapModuleChangeObserver {
 		}
 		// mScrollPane could be set invisible by JTabbedPane
 		frame.getScrollPane().setVisible(true);
+		
+		// add 22.5
+		if (aiPanel != null) {
+		    aiPanel.refresh();
+		}
+		//end  add
+		
 		mTabbedPane.setComponentAt(selectedIndex, frame.getContentComponent());
 		// double call, due to mac strangeness.
 		obtainFocusForSelected();
@@ -2113,5 +2134,14 @@ public class Controller implements MapModuleChangeObserver {
 		setProperty(PAGE_FORMAT_PROPERTY,
 				Tools.getPageFormatAsString(pageFormat.getPaper()));
 	}
+	
+	//adan add 22.5
+	public void setAIPanel(AIPanel panel) {
+	    this.aiPanel = panel;
+	}
+	public AIPanel getAIPanel() {
+	    return aiPanel;
+	}
+
 
 }

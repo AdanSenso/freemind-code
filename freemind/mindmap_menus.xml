@@ -68,6 +68,17 @@
 				<menu_action name="newChild" field="newChild" key_ref="keystroke_add_child"/>
 				<menu_action field="newSibling" key_ref="keystroke_add"/>
 				<menu_action name="newPreviousSibling" field="newPreviousSibling" key_ref="keystroke_add_sibling_before"/>
+				<menu_submenu name="ai_tools" name_ref="ai_tools">
+				    <menu_action name="expandNode" field="expandNode" />
+				    <menu_action name="expandWhole" field="expandWhole" />
+				    <menu_action name="improveNode" field="improveNode" />
+				    <menu_action name="improveSubtree" field="improveSubtree" />
+				    <menu_action name="createSow" field="createSow" />
+				    <menu_action name="exportSowDocx" field="exportSowDocx" />
+				    <menu_action name="searchFreelancerInDB" field="searchFreelancerInDB"/>
+				    <!--<menu_action name="searchFreelancerInDBv2" field="searchFreelancerInDBv2"/>-->
+				    <menu_action name="assignSowRequest" field="assignSowRequest" />
+				</menu_submenu>
 			</menu_category>
 			<menu_category name="crypto"/>
 			<menu_category name="image">
@@ -246,6 +257,20 @@
 			<menu_action name="newChild" field="newChild" key_ref="keystroke_add_child"/>
 			<menu_action field="newSibling" key_ref="keystroke_add"/>
 			<menu_action name="newPreviousSibling" field="newPreviousSibling" key_ref="keystroke_add_sibling_before"/>
+			
+			<menu_action name="reopenAIPanel" field="reopenAIPanel" />
+			<menu_submenu name="ai_tools" name_ref="ai_tools">
+			    <menu_action name="expandNode" field="expandNode" />
+				    <menu_action name="expandWhole" field="expandWhole" />
+				    <menu_action name="improveNode" field="improveNode" />
+				    <menu_action name="improveSubtree" field="improveSubtree" />
+				    <menu_action name="createSow" field="createSow" />
+				    <menu_action name="exportSowDocx" field="exportSowDocx" />
+				    <menu_action name="searchFreelancerInDB" field="searchFreelancerInDB"/>
+				    <!--<menu_action name="searchFreelancerInDBv2" field="searchFreelancerInDBv2"/>-->
+				    <menu_action name="assignSowRequest" field="assignSowRequest" />
+			    
+			</menu_submenu>
 		</menu_category>
 		<menu_separator/>
 <!--		<menu_category name="navigate_nodes">

@@ -465,6 +465,7 @@ public abstract class XMLElementAdapter extends XMLElement {
 		} else if (name.equals("ID")) {
 			// do not set label but annotate in list:
 			// System.out.println("(sValue, node) = " + sValue + ", "+ node);
+			node.setID(sValue); //Added by MAroun
 			mIdToTarget.put(sValue, node);
 		} else if (name.equals("VSHIFT")) {
 			node.setShiftY(Integer.parseInt(sValue));

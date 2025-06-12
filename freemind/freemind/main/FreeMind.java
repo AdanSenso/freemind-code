@@ -93,6 +93,9 @@ import freemind.modes.ModeController;
 import freemind.preferences.FreemindPropertyListener;
 import freemind.view.MapModule;
 import freemind.view.mindmapview.MapView;
+import freemind.view.mindmapview.AIPanel;
+import freemind.modes.mindmapmode.actions.ReopenAIPanelAction;
+
 
 public class FreeMind extends JFrame implements FreeMindMain {
 
@@ -269,6 +272,10 @@ public class FreeMind extends JFrame implements FreeMindMain {
 	private Vector mLoggerList = new Vector();
 
 	private static LogFileLogHandler sLogFileHandler;
+	
+	//adan add
+	
+
 
 	public FreeMind(Properties pDefaultPreferences,
 			Properties pUserPreferences, File pAutoPropertiesFile) {
@@ -936,10 +943,40 @@ public class FreeMind extends JFrame implements FreeMindMain {
 				frame.removeWindowFocusListener(this);
 			}
 		});
+		
+//		//adan add
+//		JFrame aiFrame = new JFrame("AI Assistant");
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.addWindowListener(new java.awt.event.WindowAdapter() {
+//		    public void windowClosing(java.awt.event.WindowEvent e) {
+//		        aiFrame.dispose();
+//		    }
+//		});
+//		//adan add
+//		// === Show AI Panel in separate window ===
+//		
+//		aiFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//		AIPanel panel = new AIPanel(frame.getController());
+//		frame.getController().setAIPanel(panel);
+//		aiFrame.setContentPane(panel);
+//		aiFrame.pack();
+//		aiFrame.setLocationRelativeTo(frame); // Position near main window
+//		aiFrame.setVisible(true);
+		
+
+
+//		
+		
+
+		//original code
 		frame.setVisible(true);
 		if (splash != null) {
 			splash.setVisible(false);
 		}
+		
+		
+		
+		//original code
 		frame.fireStartupDone();
 	}
 

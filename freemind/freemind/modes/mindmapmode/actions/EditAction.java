@@ -180,6 +180,7 @@ public class EditAction extends AbstractAction implements ActorXml {
 							mCurrentEditDialog = null;
 							mMindMapController.getController()
 									.obtainFocusForSelected();
+							System.out.println("1. maroun");
 						}
 
 						public void ok(String newText) {
@@ -205,6 +206,7 @@ public class EditAction extends AbstractAction implements ActorXml {
 						public void cancel() {
 							mMindMapController.setBlocked(false);
 							mCurrentEditDialog = null;
+							System.out.println("2. maroun");
 							mMindMapController.getController()
 									.obtainFocusForSelected();
 						}
@@ -234,12 +236,20 @@ public class EditAction extends AbstractAction implements ActorXml {
 						public void cancel() {
 							mMindMapController.setBlocked(false);
 							mCurrentEditDialog = null;
+							System.out.println("3. maroun");
 							mMindMapController.getController()
 									.obtainFocusForSelected(); // focus fix
 						}
 
 						public void ok(String newText) {
 							setNodeText(node.getModel(), newText);
+							//adan add 29.5
+							mMindMapController.autoSave();
+							System.out.println("Auto saved ");
+
+							//
+							
+							
 							cancel();
 						}
 
@@ -254,6 +264,7 @@ public class EditAction extends AbstractAction implements ActorXml {
 			return;
 		}
 		// inline editing:
+		System.out.println("4. maroun");
 		EditNodeTextField textfield = new EditNodeTextField(node, text,
 				firstEvent, mMindMapController, new EditNodeBase.EditControl() {
 
@@ -277,6 +288,10 @@ public class EditAction extends AbstractAction implements ActorXml {
 
 					public void ok(String newText) {
 						setNodeText(node.getModel(), newText);
+						//adan add 29.5
+						mMindMapController.autoSave();
+						System.out.println("Auto saved ");
+						
 						endEdit();
 					}
 

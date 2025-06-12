@@ -96,6 +96,10 @@ public abstract class NodeAdapter implements MindMapNode {
 	// (if the default is used, it is not stored) Look at mindmapmode for an
 	// example.
 	protected String style;
+	
+	//this attribute ID added by maroun
+	protected String id;
+	
 	/** stores the icons associated with this node. */
 	protected Vector/* <MindIcon> */icons = null; // lazy, fc, 30.6.2005
 
@@ -412,6 +416,11 @@ public abstract class NodeAdapter implements MindMapNode {
 	public Color getColor() {
 		return color;
 	}
+	
+	/** The ID - changed by Maroun */
+	public String getID() {
+		return id;
+	}
 
 	// ////
 	// The set methods. I'm not sure if they should be here or in the
@@ -426,6 +435,10 @@ public abstract class NodeAdapter implements MindMapNode {
 		this.color = color;
 	}
 
+	public void setID(String id) { //Maroun
+		this.id = id;
+	}
+	
 	// fc, 24.2.2004: background color:
 	public Color getBackgroundColor() {
 		return backgroundColor;
